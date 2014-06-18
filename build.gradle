@@ -1,0 +1,20 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+allprojects {
+    repositories {
+        mavenCentral()
+        maven {
+            credentials {
+                username "tfarrell"
+                password "FRJHUY0nfI"
+            }
+            url "https://nexus.spritzinc.com/content/repositories/PartnerSnapshots"
+        }
+        maven {
+            credentials {
+                username "tfarrell"
+                password "FRJHUY0nfI"
+            }
+            url "https://nexus.spritzinc.com/content/repositories/PartnerReleases"
+        }
+    }
+}

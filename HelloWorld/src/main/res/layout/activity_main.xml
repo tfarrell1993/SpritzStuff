@@ -1,0 +1,106 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:spritz="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    tools:context="com.spritzinc.android.sdk.sample.helloworld.MainActivity"
+    tools:ignore="MergeRootFrame">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvLoggedInUserLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:text="Logged in user:" />
+
+        <TextView
+            android:id="@+id/tvLoggedInUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tvLoggedInUserLabel"
+            android:layout_toLeftOf="@+id/btnLogin"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true" />
+
+        <Button
+            
+            android:id="@+id/btnLogin"
+            
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            
+            android:text="@string/activity_main_login"
+            
+            android:onClick="onBtnLoginClick"
+		/>
+
+    </RelativeLayout>
+
+    <com.spritzinc.android.sdk.view.SpritzControlView
+        android:id="@+id/spritzView"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_margin="5dp"
+        spritz:optionsMenu="@menu/additional_actions"
+	/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Pause"
+
+            android:onClick="onBtnPauseClick"
+        />
+
+    </LinearLayout>
+
+    <Button
+        
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:text="@string/activity_main_btnHelloWeb_text"
+        
+        android:onClick="onBtnHelloWebClick"
+	/>
+
+    <Button
+        
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:text="@string/activity_main_btnHelloWeb2_text"
+        
+        android:onClick="onBtnHelloWeb2Click"
+	/>
+
+    <Button
+        
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:text="@string/activity_main_btnHelloApp_text"
+        
+        android:onClick="onBtnHelloAppClick"
+	/>
+
+
+</LinearLayout>

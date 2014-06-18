@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="activity_main_none">None</string>
+    
+    <string name="activity_main_login">Login</string>
+    <string name="activity_main_logout">Logout</string>
+    
+    <string name="activity_main_btnHelloWeb_text">Spritz from URL</string>
+
+    <string name="activity_main_btnHelloWeb2_text">Spritz a string</string>
+
+    <string name="activity_main_btnHelloApp_text">Spritz via local engine</string>
+
+    <string name="app_name">Hello World</string>
+
+</resources>
