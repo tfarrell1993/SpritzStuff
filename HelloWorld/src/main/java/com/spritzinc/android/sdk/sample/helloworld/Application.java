@@ -11,11 +11,11 @@ public class Application extends android.app.Application {
     public void onCreate() {
         super.onCreate();
 
-
         SpritzSDK.init(this,
-        	"terence.m.farrell@gmail.com", // 4524122930975538943
-       		"53960584e4b04a19d675937d",
-       		"https://sdk.spritzinc.com/js/1.0/examples/login_success.html"
+        	"4c79146ca2d934cd8",
+       		"64342d83-1d27-4656-97c6-d53591b5d7d6",
+       		"https://sdk.spritzinc.com/android/examples/login_success.html"
         );
     }
+
 }

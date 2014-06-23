@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/mi_view_type_base"
+        android:title="SpritzBaseView" />
+    <item android:id="@+id/mi_view_type_control"
+          android:title="SpritzControlView" />
+    <item android:id="@+id/mi_view_type_full"
+          android:title="SpritzFullControlView" />
+</menu>

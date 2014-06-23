@@ -3,18 +3,11 @@ allprojects {
     repositories {
         mavenCentral()
         maven {
-            credentials {
-                username "tfarrell"
-                password "FRJHUY0nfI"
-            }
-            url "https://nexus.spritzinc.com/content/repositories/PartnerSnapshots"
-        }
-        maven {
-            credentials {
-                username "tfarrell"
-                password "FRJHUY0nfI"
-            }
-            url "https://nexus.spritzinc.com/content/repositories/PartnerReleases"
+            url "https://nexus.spritzinc.com/content/repositories/PublicReleases"
         }
     }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
 }
