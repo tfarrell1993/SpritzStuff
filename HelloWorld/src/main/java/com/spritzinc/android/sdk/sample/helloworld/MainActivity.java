@@ -7,12 +7,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnKeyListener;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -53,13 +57,32 @@ public class MainActivity extends Activity implements SpritzSDK.LoginEventListen
 	private FrameLayout flSpritzViewContainer;
     private SpritzBaseView spritzView;
 	private TextView tvInfo;
+	
+	static private EditText inputField;
+	static private String input;
 
+	
+	/*
+	protected void onCreate(Bundle savedInstanceState) {
+		
+		inputField = (EditText)findViewById(R.id.inputField);
+		inputField.setOnKeyListener(new OnKeyListener() {
+			public boolean OnKey(View v, int keyCode, KeyEvent event) {
+				if (keyCode == 66 || keyCode == 40) {
+					input = inputField.getText().toString();
+				}
+			}
+		});
+		
+		
+	}*/
+	
 	/* Public Static Methods */
-
 	public static void startActivity(Context context, int viewType) {
 		Intent intent = new Intent(context, MainActivity.class);
 		intent.putExtra(EXTRA_VIEW_TYPE, viewType);
 		context.startActivity(intent);
+		
 	}
 
 	/* Constructors */
@@ -86,15 +109,23 @@ public class MainActivity extends Activity implements SpritzSDK.LoginEventListen
 		updateInfo();
 	}
 
-    public void onBtnHelloWebClick(View view) {
+    public void onBtnHelloWebClick(View view) { // Spritz from web
+		Log.v("debug", "Spritz from web button has been pressed");
         UrlSpritzSource source = new UrlSpritzSource("http://sdk.spritzinc.com/sampleText/HelloWorld.html");
+		Log.v("debug", "Spritzing now");
 		spritz(source);
+		Log.v("debug", "made it!");
     }
 
-    public void onBtnHelloWeb2Click(View view) {
-    	SimpleSpritzSource source = new SimpleSpritzSource("Here's to Spritzing arbitrary text!",
-				new Locale("en", "US"));
+    public void onBtnHelloWeb2Click(View view) { // Spritz from string
+		Log.v("debug", "Spritz a string button has been pressed");
+		input = inputField.getText().toString();
+		SimpleSpritzSource source = new SimpleSpritzSource(input, new Locale("en, US"));
+    	/*SimpleSpritzSource source = new SimpleSpritzSource("Here's to Spritzing arbitrary text!",
+				new Locale("en", "US"));*/
+		Log.v("debug", "String has been read in.");
 		spritz(source);
+		Log.v("debug", "Made this shit!");
     }
 
 	public void onBtnLoginClick(View view) {
@@ -306,6 +337,39 @@ public class MainActivity extends Activity implements SpritzSDK.LoginEventListen
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				onStartModeOptionChanged(checkedId);
+			}
+		});
+		
+		// My additions start here
+		
+		inputField = (EditText)findViewById(R.id.inputField);
+		inputField.setOnKeyListener(new OnKeyListener() {
+
+			public boolean onKey(View v, int keyCode, KeyEvent event)
+			{
+				//Log.v("click", "clique clique clique");
+				//Log.v("Data", "keyCode = "+keyCode+", KeyEvent = "+event.getKeyCode());
+				/*if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.FLAG_EDITOR_ACTION)
+				{
+					int x = Integer.parseInt(answerBox.getText().toString());
+					Log.v("Answer", "Guess acknowledged as "+x);
+					processResponse(x);
+				}
+				switch (keyCode)
+				{
+					case KeyEvent.FLAG_EDITOR_ACTION:
+						int x = Integer.parseInt(answerBox.getText().toString());
+						Log.v("Answer", "Guess acknowledged as "+x);
+						processResponse(x);
+						
+					return true;
+				}*/
+				if (keyCode == 66)
+				{
+					input = inputField.getText().toString();
+					Log.v("input", "input has been acknowledged as "+input);
+				}
+				return false;
 			}
 		});
 	}

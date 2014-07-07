@@ -14,4 +14,6 @@
 
     <string name="app_name">Hello World</string>
 
+    <string name="edit_text">Enter input here</string>
+    
 </resources>

@@ -175,11 +175,20 @@
         />
 
         <Button
+            android:id="@+id/editField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/activity_main_btnHelloWeb2_text"
             android:onClick="onBtnHelloWeb2Click"
-        />
+            android:text="@string/activity_main_btnHelloWeb2_text" />
+        
+        <EditText
+            android:id="@+id/inputField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:gravity="center_horizontal"
+            android:inputType="text"
+            android:text="@string/edit_text" />
 
     </LinearLayout>
 
