@@ -19,17 +19,7 @@ public class Application extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        /*
-        inputField = (EditText)findViewById(R.id.inputField);
-		inputField.setOnKeyListener(new OnKeyListener() {
-			
-			public boolean onKey(View v, int keyCode, KeyEvent event) {
-				if (keyCode == 66 || keyCode == 40) {
-					input = inputField.getText().toString();
-				}
-			}
-		});
-        */
+        
         SpritzSDK.init(this,
         	"4c79146ca2d934cd8",
        		"64342d83-1d27-4656-97c6-d53591b5d7d6",

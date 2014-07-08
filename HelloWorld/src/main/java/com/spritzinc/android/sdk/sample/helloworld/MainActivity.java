@@ -60,22 +60,6 @@ public class MainActivity extends Activity implements SpritzSDK.LoginEventListen
 	
 	static private EditText inputField;
 	static private String input;
-
-	
-	/*
-	protected void onCreate(Bundle savedInstanceState) {
-		
-		inputField = (EditText)findViewById(R.id.inputField);
-		inputField.setOnKeyListener(new OnKeyListener() {
-			public boolean OnKey(View v, int keyCode, KeyEvent event) {
-				if (keyCode == 66 || keyCode == 40) {
-					input = inputField.getText().toString();
-				}
-			}
-		});
-		
-		
-	}*/
 	
 	/* Public Static Methods */
 	public static void startActivity(Context context, int viewType) {
@@ -118,14 +102,12 @@ public class MainActivity extends Activity implements SpritzSDK.LoginEventListen
     }
 
     public void onBtnHelloWeb2Click(View view) { // Spritz from string
-		Log.v("debug", "Spritz a string button has been pressed");
+		
 		input = inputField.getText().toString();
 		SimpleSpritzSource source = new SimpleSpritzSource(input, new Locale("en, US"));
-    	/*SimpleSpritzSource source = new SimpleSpritzSource("Here's to Spritzing arbitrary text!",
-				new Locale("en", "US"));*/
-		Log.v("debug", "String has been read in.");
+		
 		spritz(source);
-		Log.v("debug", "Made this shit!");
+		
     }
 
 	public void onBtnLoginClick(View view) {
@@ -347,23 +329,6 @@ public class MainActivity extends Activity implements SpritzSDK.LoginEventListen
 
 			public boolean onKey(View v, int keyCode, KeyEvent event)
 			{
-				//Log.v("click", "clique clique clique");
-				//Log.v("Data", "keyCode = "+keyCode+", KeyEvent = "+event.getKeyCode());
-				/*if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.FLAG_EDITOR_ACTION)
-				{
-					int x = Integer.parseInt(answerBox.getText().toString());
-					Log.v("Answer", "Guess acknowledged as "+x);
-					processResponse(x);
-				}
-				switch (keyCode)
-				{
-					case KeyEvent.FLAG_EDITOR_ACTION:
-						int x = Integer.parseInt(answerBox.getText().toString());
-						Log.v("Answer", "Guess acknowledged as "+x);
-						processResponse(x);
-						
-					return true;
-				}*/
 				if (keyCode == 66)
 				{
 					input = inputField.getText().toString();
