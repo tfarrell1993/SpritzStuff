@@ -1,5 +1,6 @@
 package com.spritzinc.android.sdk.sample.helloworld;
 
+import com.spritzinc.android.sdk.sample.helloworld.R;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -61,6 +62,15 @@ public class MainActivity extends Activity implements SpritzSDK.LoginEventListen
 	static private EditText inputField;
 	static private String input;
 	
+	private Button playButton;
+	private Button pauseButton;
+	private Button backButton;
+	private Button forwardButton;
+	private Button rewindButton;
+	private Button resetButton;
+	private Button slowerButton;
+	private Button fasterButton;
+	
 	/* Public Static Methods */
 	public static void startActivity(Context context, int viewType) {
 		Intent intent = new Intent(context, MainActivity.class);
@@ -95,7 +105,12 @@ public class MainActivity extends Activity implements SpritzSDK.LoginEventListen
 
     public void onBtnHelloWebClick(View view) { // Spritz from web
 		Log.v("debug", "Spritz from web button has been pressed");
-        UrlSpritzSource source = new UrlSpritzSource("http://sdk.spritzinc.com/sampleText/HelloWorld.html");
+		input = inputField.getText().toString();
+		if (!input.startsWith("http://")) {
+			input = "http://" + input;
+		}
+		UrlSpritzSource source = new UrlSpritzSource(input);
+        // UrlSpritzSource source = new UrlSpritzSource("http://www.aeaweb.org/sample_references.pdf"); //http://sdk.spritzinc.com/sampleText/HelloWorld.html
 		Log.v("debug", "Spritzing now");
 		spritz(source);
 		Log.v("debug", "made it!");
@@ -109,7 +124,9 @@ public class MainActivity extends Activity implements SpritzSDK.LoginEventListen
 		spritz(source);
 		
     }
-
+    public void onBtnClearClick(View view) {
+    	inputField.setText("");
+    }
 	public void onBtnLoginClick(View view) {
 		SpritzSDK sdk = SpritzSDK.getInstance();
 		
@@ -233,7 +250,18 @@ public class MainActivity extends Activity implements SpritzSDK.LoginEventListen
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		flSpritzViewContainer = (FrameLayout)findViewById(R.id.flSpritzViewContainer);
-
+		/** Start weird button shit
+		
+		playButton = (Button) findViewByID(R.id.btnPlay);
+		pauseButton = (Button) findViewByID(R.id.btnPause);
+		backButton = (Button) findViewByID(R.id.btnBack);
+		forwardButton = (Button) findViewByID(R.id.btnForward);
+		rewindButton = (Button) findViewByID(R.id.btnRewind);
+		resetButton = (Button) findViewByID(R.id.btnReset);
+		slowerButton = (Button) findViewByID(R.id.btnSlower);
+		fasterButton = (Button) findViewByID(R.id.btnFaster);
+		
+		// ** End weird button shit */
 		final int argViewType = getIntent().getIntExtra(EXTRA_VIEW_TYPE, -1);
 		final SharedPreferences prefs = getSharedPrefs();
 		final int savedViewType = prefs.getInt(PREF_VIEW_TYPE, VIEW_TYPE_BASE);

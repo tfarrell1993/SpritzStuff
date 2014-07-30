@@ -16,4 +16,6 @@
 
     <string name="edit_text">Enter input here</string>
     
+    <string name="activity_main_btnClear_text">Clear Text Field</string>
+    
 </resources>

@@ -59,49 +59,49 @@
             android:gravity="center">
 
             <Button
+                android:id="@+id/btnPlay"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Play"
                 android:onClick="onBtnPlayClick"
-                android:textSize="6pt"
-            />
+                android:text="Play"
+                android:textSize="6pt" />
 
             <Button
+                android:id="@+id/btnPause"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Pause"
                 android:onClick="onBtnPauseClick"
-                android:textSize="6pt"
-            />
+                android:text="Pause"
+                android:textSize="6pt" />
 
             <Button
+                android:id="@+id/btnBack"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Back"
                 android:onClick="onBtnBackupClick"
-                android:textSize="6pt"
-            />
+                android:text="Back"
+                android:textSize="6pt" />
 
             <Button
+                android:id="@+id/btnForward"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Forward"
                 android:onClick="onBtnForwardClick"
-                android:textSize="6pt"
-            />
+                android:text="Forward"
+                android:textSize="6pt" />
 
             <Button
+                android:id="@+id/btnRewind"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Rewind"
                 android:onClick="onBtnRewindClick"
-                android:textSize="6pt"
-            />
+                android:text="Rewind"
+                android:textSize="6pt" />
 
         </LinearLayout>
 
@@ -111,28 +111,28 @@
             android:gravity="center">
 
             <Button
+                android:id="@+id/btnReset"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reset"
                 android:onClick="onBtnResetClick"
-                android:textSize="6pt"
-                />
+                android:text="Reset"
+                android:textSize="6pt" />
 
             <Button
+                android:id="@+id/btnSlower"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Slower"
                 android:onClick="onBtnSlowerClick"
-                android:textSize="6pt"
-            />
+                android:text="Slower"
+                android:textSize="6pt" />
 
             <Button
+                android:id="@+id/btnFaster"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Faster"
                 android:onClick="onBtnFasterClick"
-                android:textSize="6pt"
-            />
+                android:text="Faster"
+                android:textSize="6pt" />
 
         </LinearLayout>
 
@@ -189,6 +189,13 @@
             android:gravity="center_horizontal"
             android:inputType="text"
             android:text="@string/edit_text" />
+        
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:onClick="onBtnClearClick"
+            android:text="@string/activity_main_btnClear_text" />
 
     </LinearLayout>
 
