@@ -57,6 +57,7 @@ public final class R {
     }
     public static final class string {
         public static final int activity_main_btnClear_text=0x7f050008;
+        public static final int activity_main_btnFileRead_text=0x7f050009;
         public static final int activity_main_btnHelloApp_text=0x7f050005;
         public static final int activity_main_btnHelloWeb2_text=0x7f050004;
         public static final int activity_main_btnHelloWeb_text=0x7f050003;

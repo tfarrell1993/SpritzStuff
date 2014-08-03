@@ -1,4 +1,6 @@
 package com.spritzinc.android.sdk.sample.helloworld;
+//import org.apache.pdfbox.pdmodel.*;
+//import org.apache.pdfbox.util.*;
 
 import com.spritzinc.android.sdk.sample.helloworld.R;
 import android.app.Activity;
@@ -8,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,6 +36,8 @@ import com.spritzinc.android.sdk.view.SpritzBaseView;
 import com.spritzinc.android.sdk.view.SpritzControlView;
 
 import java.util.Locale;
+import java.io.*;
+import java.lang.*;
 
 public class MainActivity extends Activity implements SpritzSDK.LoginEventListener,
 		SpritzSDK.LoginStatusChangeListener {
@@ -70,6 +75,62 @@ public class MainActivity extends Activity implements SpritzSDK.LoginEventListen
 	private Button resetButton;
 	private Button slowerButton;
 	private Button fasterButton;
+	
+	private File sdCard;
+	private File testFile;
+	private String fileString;
+	
+	private void filePopulate(File sdCard) { /*
+		int i = 0;
+		String filePath = "";
+		if (sdCard != null) {
+			while (i != sdCard.length) {
+				filePath = sdCard[i].getAbsolutePath();
+				if (sdCard[i].isDirectory()) {
+					File temp[] = sdCard[i].listFiles();
+					filePopulate(temp);
+				}
+				
+			}
+		} */
+		testFile = new File(sdCard, "test.txt");
+		Log.v("Terence", sdCard.getAbsolutePath());
+		Log.v("Terence", testFile.getAbsolutePath());
+		if (!testFile.exists()) {
+			Log.v("Terence", "File doesn't even exist, dumbass");
+		}
+		if (!testFile.canRead()) {
+			Log.v("Terence", "File's broken, dumbass");
+		}
+		StringBuilder builder = new StringBuilder();
+		try {
+			BufferedReader tempBr = new BufferedReader(new FileReader(testFile));
+			String line;
+			while ((line = tempBr.readLine()) != null) {
+				builder.append(line);
+				builder.append('\n');
+			}
+		}
+		catch (IOException e) {
+			Log.v("Terence", e.toString());
+			// Fill this in when I know what I'm doing lololol
+		}
+		fileString = builder.toString();
+		/*StringBuilder tempStr = new StringBuilder();
+		try {
+			BufferedReader tempBr = new BufferedReader(new FileReader(testFile));
+			String line;
+			while ((line = tempBr.readLine()) != null) {
+				tempStr.append(line);
+				tempStr.append('\n');
+			}
+			fileString = tempStr.toString();
+		}
+		catch (IOException e) {
+			// Fill this in when I know what I'm doing lololol
+		}*/
+		Log.v("Terence", "Thing is doing! " + fileString + " is the string.");
+	}
 	
 	/* Public Static Methods */
 	public static void startActivity(Context context, int viewType) {
@@ -126,6 +187,11 @@ public class MainActivity extends Activity implements SpritzSDK.LoginEventListen
     }
     public void onBtnClearClick(View view) {
     	inputField.setText("");
+    }
+    public void onBtnFileReadClick(View view) {
+    	SimpleSpritzSource source = new SimpleSpritzSource(fileString, new Locale("en, US"));
+    	
+    	spritz(source);
     }
 	public void onBtnLoginClick(View view) {
 		SpritzSDK sdk = SpritzSDK.getInstance();
@@ -262,6 +328,11 @@ public class MainActivity extends Activity implements SpritzSDK.LoginEventListen
 		fasterButton = (Button) findViewByID(R.id.btnFaster);
 		
 		// ** End weird button shit */
+		Log.v("Terence", "Do the thing");
+		sdCard = Environment.getExternalStorageDirectory();
+		filePopulate(sdCard);
+		Log.v("Terence", "Thing should have been done.");
+		
 		final int argViewType = getIntent().getIntExtra(EXTRA_VIEW_TYPE, -1);
 		final SharedPreferences prefs = getSharedPrefs();
 		final int savedViewType = prefs.getInt(PREF_VIEW_TYPE, VIEW_TYPE_BASE);
@@ -477,4 +548,5 @@ public class MainActivity extends Activity implements SpritzSDK.LoginEventListen
 			btnLogin.setText(getResources().getString(R.string.activity_main_logout));
 		}
 	}
+	
 }

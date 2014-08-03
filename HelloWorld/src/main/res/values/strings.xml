@@ -12,10 +12,12 @@
 
     <string name="activity_main_btnHelloApp_text">Spritz via local engine</string>
 
-    <string name="app_name">Hello World</string>
+    <string name="app_name">SpritzReader</string>
 
     <string name="edit_text">Enter input here</string>
     
     <string name="activity_main_btnClear_text">Clear Text Field</string>
+    
+    <string name="activity_main_btnFileRead_text">Read from File</string>
     
 </resources>

@@ -196,6 +196,12 @@
             android:layout_marginTop="5dip"
             android:onClick="onBtnClearClick"
             android:text="@string/activity_main_btnClear_text" />
+        
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onBtnFileReadClick"
+            android:text="@string/activity_main_btnFileRead_text" />
 
     </LinearLayout>
 
